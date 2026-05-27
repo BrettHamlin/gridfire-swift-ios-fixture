@@ -30,6 +30,18 @@ final class SavedTriageSearchTests: XCTestCase {
         )
     }
 
+    func testAccessibilitySummaryIncludesHighPriorityFilterTitle() {
+        let search = SavedTriageSearch(
+            title: "Critical path",
+            query: "",
+            filter: .highPriority,
+            includeResolved: true
+        )
+
+        // harness:criterion=c-saved-triage-search-accessibility-summary-includes-high
+        XCTAssertTrue(search.accessibilitySummary.contains("High"))
+    }
+
     func testStoreSortsSavedSearchesByTitle() {
         let store = SavedTriageSearchStore(searches: [])
         store.save(SavedTriageSearch(title: "Zeta", query: "", filter: .all, includeResolved: true))
