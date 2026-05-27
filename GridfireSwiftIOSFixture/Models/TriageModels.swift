@@ -52,6 +52,7 @@ enum IssueState: String, CaseIterable, Identifiable, Equatable {
 enum IssueFilter: String, CaseIterable, Identifiable, Equatable {
     case all
     case open
+    case highPriority
     case watching
     case resolved
 
@@ -63,6 +64,8 @@ enum IssueFilter: String, CaseIterable, Identifiable, Equatable {
             return "All"
         case .open:
             return "Open"
+        case .highPriority:
+            return "High"
         case .watching:
             return "Watch"
         case .resolved:
@@ -109,4 +112,3 @@ extension TriageIssue {
         )
     }
 }
-

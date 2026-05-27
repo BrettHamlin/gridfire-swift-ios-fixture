@@ -43,6 +43,8 @@ final class IssueListViewModel: ObservableObject {
             return "No issues"
         case .open:
             return "No open issues"
+        case .highPriority:
+            return "No high-priority issues"
         case .watching:
             return "No watched issues"
         case .resolved:
@@ -76,6 +78,8 @@ final class IssueListViewModel: ObservableObject {
             return true
         case .open:
             return issue.state == .open
+        case .highPriority:
+            return issue.priority == .high
         case .watching:
             return issue.state == .watching
         case .resolved:
