@@ -2,6 +2,18 @@ import XCTest
 @testable import GridfireSwiftIOSFixture
 
 final class SavedTriageSearchTests: XCTestCase {
+    func testAccessibilitySummaryIncludesHighPriorityFilterTitle() {
+        // harness:criterion=c-saved-search-accessibility-summary-high-priority
+        let search = SavedTriageSearch(
+            title: "Escalations",
+            query: "",
+            filter: .highPriority,
+            includeResolved: false
+        )
+
+        XCTAssertTrue(search.accessibilitySummary.contains("High Priority"))
+    }
+
     func testAccessibilitySummaryIncludesFilterAndQuery() {
         let search = SavedTriageSearch(
             title: "Release blockers",
