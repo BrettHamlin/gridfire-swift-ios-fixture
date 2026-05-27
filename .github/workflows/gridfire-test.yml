@@ -1,5 +1,7 @@
 name: Gridfire Test
 
+# gridfire_template_version: stage3-swift-ios/v1
+
 on:
   workflow_dispatch:
     inputs:
@@ -17,12 +19,12 @@ jobs:
       XCODE_PROJECT: GridfireSwiftIOSFixture.xcodeproj
       XCODE_SCHEME: GridfireSwiftIOSFixture
       XCODE_DESTINATION: platform=iOS Simulator,name=iPhone 17,OS=26.4
-      DERIVED_DATA_PATH: /tmp/gridfire-swift-ios-fixture-derived-data
+      DERIVED_DATA_PATH: /tmp/gridfire-derived-data
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.target_ref }}
-      - name: Prove pinned Xcode and destination
+      - name: Select pinned Xcode
         run: |
           if [[ ! -d "$DEVELOPER_DIR" ]]; then
             echo "Pinned Xcode not found at $DEVELOPER_DIR" >&2
