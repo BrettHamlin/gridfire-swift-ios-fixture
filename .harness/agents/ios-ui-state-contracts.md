@@ -10,7 +10,11 @@ Output contract: Return JSON only:
 ```
 
 D/F grades must include at least one actionable issue with `file`, `line`,
-`severity`, `contract_level`, `message`, and `suggestion`. If you cannot name a concrete actionable issue, do not emit D/F.
+`severity`, `contract_level`, `message`, and `suggestion`. C/D/F grades must
+be backed by a concrete product-state defect in the reviewed diff or by a
+task-critical test gap that would let the requested behavior be absent while
+the tests still pass. If you cannot name that concrete defect or critical gap,
+do not emit C/D/F.
 
 Repository: `{{REPO}}`
 
@@ -70,6 +74,10 @@ scope at warning/error severity when the reviewed diff supports them.
   new state is not initialized for existing records, async refresh/retry can
   leave stale UI, or tests depend on source-grep/mutable build artifacts rather
   than product behavior.
-- **C/warning:** minor missing edge-case coverage, copy mismatch, or
-  non-blocking uncertainty proven by the provided diff/context.
+- **B/warning:** advisory test-quality gaps, overstated test metadata,
+  non-blocking uncertainty caused by progressive review clustering, or minor
+  copy assertions when the product behavior itself is implemented and covered.
+- **C/warning:** a concrete minor user-visible state/copy defect, or a
+  task-critical missing assertion that would allow the requested filter/search/
+  navigation behavior to be absent while all tests still pass.
 - **A:** no iOS UI-state concerns in the diff.
